@@ -1,12 +1,12 @@
-# Name:
-# Student ID:
-# Email:
+# Name: Eve Orban
+# Student ID: 50136872
+# Email: eveorban@umich.edu
 # Who or what you worked with on this homework (including generative AI like ChatGPT):
 # If you worked with generative AI also add a statement for how you used it.
 # e.g.:
 # Asked ChatGPT hints for debugging and suggesting the general structure of the code
 # Did your use of GenAI on this assignment align with your goals and guidelines in 
-#    your Gen AI contract? If not, why?
+# your Gen AI contract? If not, why?
 
 import random
 import io
@@ -33,7 +33,9 @@ class CouponDispenser:
             coupon_cards (list[str]): list of possible coupons users can receive.
         """
         # TODO: Implement per instructions
-        pass
+        self.coupon_cards = coupon_cards
+        self.customer_roster = []
+        self.issued_indicies = []
 
     def __str__(self):
         """
@@ -44,7 +46,12 @@ class CouponDispenser:
             str
         """
         # TODO: Implement per instructions
-        pass
+        if len(self.coupon_cards) != 0:
+            coupon_list = self.coupon_cards
+            '|'.join(coupon_list)
+            return coupon_list
+        else:
+            return ''
 
     def issue_coupon(self, name):
         """
