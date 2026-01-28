@@ -24,7 +24,6 @@ class CouponDispenser:
       - issued_indices: list[int]           # indices into coupon_cards aligned to customer_roster
 
     """
-
     def __init__(self, coupon_cards):
         """
         Initialize a new CouponDispenser object.
@@ -35,7 +34,7 @@ class CouponDispenser:
         # TODO: Implement per instructions
         self.coupon_cards = coupon_cards
         self.customer_roster = []
-        self.issued_indicies = []
+        self.issued_indices = []
 
     def __str__(self):
         """
@@ -47,13 +46,16 @@ class CouponDispenser:
         """
         # TODO: Implement per instructions
         if len(self.coupon_cards) != 0:
-            coupon_list = self.coupon_cards
-            '|'.join(coupon_list)
-            return coupon_list
+            return '|'.join(self.coupon_cards)
         else:
             return ''
 
     def issue_coupon(self, name):
+        if len(self.coupon_cards) == 0:
+            return "The box is empty."
+        if name in self.customer_roster:
+            return
+        
         """
         Assign name with a random coupon. If name is already assigned a coupon, return it.
         If the list coupon_cards is empty, return:
@@ -406,5 +408,5 @@ def test():
 
 if __name__ == "__main__":
     main()
-    # test()
+    test()
 
