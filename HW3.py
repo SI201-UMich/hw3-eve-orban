@@ -53,15 +53,17 @@ class CouponDispenser:
     def issue_coupon(self, name):
         if len(self.coupon_cards) == 0:
             return "The box is empty."
+        
         if name in self.customer_roster:
             index = self.customer_roster.index(name)
             set_coupon = self.issued_indices[index]
             return (f'That name already has a coupon: {set_coupon}')
         
-        random_index = random.randrange(len(self.coupon_cards))
-        self.customer_roster.append(name)
-        self.issued_indices.append(random_index)
-        return self.coupon_cards[random_index]
+        if name not in self.customer_roster:
+            random_index = random.randrange(len(self.coupon_cards))
+            self.customer_roster.append(name)
+            self.issued_indices.append(random_index)
+            return self.coupon_cards[random_index]
 
         """
         Assign name with a random coupon. If name is already assigned a coupon, return it.
@@ -95,8 +97,31 @@ class CouponDispenser:
         Reminder: Use lists only (no dictionaries).
         """
         # TODO: Implement per instructions 
-        pass
+        round_number = 1
 
+        while True:
+            user_input = input(f"Round {round_number} - Enter a name (or a comma-separated list), or type 'show' or 'exit': ")
+
+            if user_input == 'exit':
+                print('Goodbye!')
+                break
+            
+            elif user_input == 'show':
+                for i in range(0, len(self.customer_roster)):
+                    name = self.customer_roster[i]
+                    coupon_index = self.issued_indices[i]
+                    coupon = self.coupon_cards[coupon_index]
+                    print(f'{name}: {coupon}')
+                    continue
+            
+            else: 
+                names = user_input.split(',')
+                
+
+
+
+    
+    
     def tally_distribution(self):
         """
         Extra credit:
