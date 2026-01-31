@@ -147,13 +147,6 @@ class CouponDispenser:
 
 
 def main():
-    """
-    Driver function:
-      - Define the coupon_cards list (example coupons below)
-      - Create a CouponDispenser
-      - Start the interaction via distribute_session()
-      - After exit, call tally_distribution() to print the distribution in the terminal
-    """
     coupon_cards = [
         "10% off",
         "Free small coffee",
@@ -164,8 +157,8 @@ def main():
     # Uncomment the lines below as you implement each function.
     box = CouponDispenser(coupon_cards)
     box.distribute_session()
-    # box.tally_distribution()
-    pass
+    box.tally_distribution()
+    
 
 
 # -----------------------
@@ -297,7 +290,6 @@ def test():
         box3 = CouponDispenser(notes3)
         out1 = _capture_session_output(box3, ["Ava, Ben", "show", "exit"])
         check(box3.customer_roster == ["Ava", "Ben"], "distribute_session: comma-separated assigns two names")
-        print(out1)
         check(("Ava:" in out1) and ("Ben:" in out1), "distribute_session: 'show' shows both names")
         check("Goodbye!" in out1, "distribute_session: prints goodbye on exit")
         check("Round 1 - Enter a name (or a comma-separated list), or type 'show' or 'exit': " in out1,
